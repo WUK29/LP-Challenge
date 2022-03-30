@@ -1,0 +1,15 @@
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\bin\Debug\net6.0\LP-Challenge.exe
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\bin\Debug\net6.0\LP-Challenge.deps.json
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\bin\Debug\net6.0\LP-Challenge.runtimeconfig.json
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\bin\Debug\net6.0\LP-Challenge.dll
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\bin\Debug\net6.0\LP-Challenge.pdb
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.csproj.AssemblyReference.cache
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.AssemblyInfoInputs.cache
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.AssemblyInfo.cs
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.csproj.CoreCompileInputs.cache
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.dll
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\refint\LP-Challenge.dll
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.pdb
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\LP-Challenge.genruntimeconfig.cache
+D:\Projects\LP-Challenge\LP-Challenge\LP-Challenge\obj\Debug\net6.0\ref\LP-Challenge.dll
