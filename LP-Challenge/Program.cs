@@ -73,39 +73,45 @@ int CalculatePalletsCount(List<ShipmentItem> shipmentItems, int volumeOfPallet)
     int requiredPallets = 0;
     decimal remainingPalletVolume = volumeOfPallet;//set the actual volum of Pallet
 
-    List<ShipmentItem> stackableItems = shipmentItems.Where(x => x.IsStackable == true).ToList();//Stackable items fills first
-    foreach (ShipmentItem shipmentItem in stackableItems)
+    try
     {
-        decimal volumeOfShipmentItem = GetVolumeOfShipmentItem(shipmentItem);//get item's volume
-        if (remainingPalletVolume == volumeOfPallet)//if remaining volume is same as the actual Pallet volume then assign new Pallet
+        List<ShipmentItem> stackableItems = shipmentItems.Where(x => x.IsStackable == true).ToList();//Stackable items fills first
+        foreach (ShipmentItem shipmentItem in stackableItems)
         {
-            requiredPallets++;//add Pallet
+            decimal volumeOfShipmentItem = GetVolumeOfShipmentItem(shipmentItem);//get item's volume
+            if (remainingPalletVolume == volumeOfPallet)//if remaining volume is same as the actual Pallet volume then assign new Pallet
+            {
+                requiredPallets++;//add Pallet
+            }
+            remainingPalletVolume = remainingPalletVolume - volumeOfShipmentItem;//remove the Item's volume from the Pallet's volume
+            if (remainingPalletVolume <= 0)//if the remaining pallet volume is 0 or less then 0 then 
+            {
+                remainingPalletVolume = volumeOfPallet;//it will reassgin the actual volume
+            }
         }
-        remainingPalletVolume = remainingPalletVolume - volumeOfShipmentItem;//remove the Item's volume from the Pallet's volume
-        if (remainingPalletVolume <= 0)//if the remaining pallet volume is 0 or less then 0 then 
+
+        List<ShipmentItem> noStackableItems = shipmentItems.Where(x => x.IsStackable == false).ToList();//Unstackable items fills on last
+        foreach (ShipmentItem shipmentItem in noStackableItems)
         {
-            remainingPalletVolume = volumeOfPallet;//it will reassgin the actual volume
+            decimal volumeOfShipmentItem = GetVolumeOfShipmentItem(shipmentItem);//get item's volume
+            if (remainingPalletVolume == volumeOfPallet)//if remaining volume is same as the actual Pallet volume then assign new Pallet
+            {
+                requiredPallets++;//add Pallet
+            }
+            remainingPalletVolume = remainingPalletVolume - volumeOfShipmentItem;//remove the Item's volume from the Pallet's volume
+            decimal d = volumeOfPallet / remainingPalletVolume;
+            if (2 <= d)//stackable check(2 items will not stack)
+            {
+                remainingPalletVolume = volumeOfPallet;//it will reassgin the actual volume
+            }
         }
     }
-
-    List<ShipmentItem> noStackableItems = shipmentItems.Where(x => x.IsStackable == false).ToList();//Unstackable items fills on last
-    foreach (ShipmentItem shipmentItem in noStackableItems)
+    catch (Exception ex)
     {
-        decimal volumeOfShipmentItem = GetVolumeOfShipmentItem(shipmentItem);//get item's volume
-        if (remainingPalletVolume == volumeOfPallet)//if remaining volume is same as the actual Pallet volume then assign new Pallet
-        {
-            requiredPallets++;//add Pallet
-        }
-        remainingPalletVolume = remainingPalletVolume - volumeOfShipmentItem;//remove the Item's volume from the Pallet's volume
-        decimal d = volumeOfPallet / remainingPalletVolume;
-        if (2 <= d)//stackable check(2 items will not stack)
-        {
-            remainingPalletVolume = volumeOfPallet;//it will reassgin the actual volume
-        }
+        throw;
     }
     return requiredPallets;
 }
-
 
 decimal GetVolumeOfShipmentItem(ShipmentItem shipmentItem)
 {
